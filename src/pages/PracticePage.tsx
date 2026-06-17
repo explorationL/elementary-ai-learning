@@ -112,7 +112,7 @@ export const PracticePage: React.FC = () => {
                 <h2 className="font-display text-xl text-text mt-2">{chapterData.name}</h2>
               </div>
               <div className="text-right">
-                <p className="text-sm text-textLight">共 {questions.length} 道题</p>
+                <p className="text-sm text-textLight">10道题</p>
               </div>
             </div>
           </Card>
@@ -155,6 +155,22 @@ export const PracticePage: React.FC = () => {
             开始练习
             <ChevronRight className="w-5 h-5" />
           </button>
+        </main>
+      </div>
+    );
+  }
+
+  if (!currentQuestion && mode === 'doing') {
+    return (
+      <div className="min-h-screen bg-background pb-24">
+        <Header title="练习" showBack />
+        <main className="max-w-4xl mx-auto px-4 py-6">
+          <Card>
+            <div className="text-center py-12">
+              <p className="text-textLight">题目加载中...</p>
+              <button onClick={() => setMode('select')} className="mt-4 btn-primary">返回选择</button>
+            </div>
+          </Card>
         </main>
       </div>
     );

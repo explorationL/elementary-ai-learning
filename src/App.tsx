@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { AppProvider } from './context/AppContext';
 import { Navigation } from './components/Navigation';
 import { HomePage } from './pages/HomePage';
@@ -12,7 +12,7 @@ import { GrowthPage } from './pages/GrowthPage';
 function App() {
   return (
     <AppProvider>
-      <BrowserRouter>
+      <HashRouter>
         <div className="min-h-screen bg-background">
           <Routes>
             <Route path="/" element={<HomePage />} />
@@ -25,7 +25,7 @@ function App() {
           </Routes>
           <Navigation />
         </div>
-      </BrowserRouter>
+      </HashRouter>
     </AppProvider>
   );
 }
