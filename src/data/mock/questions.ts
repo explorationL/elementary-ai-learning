@@ -325,9 +325,15 @@ export const getQuestionsByType = (chapterId: string, type: string): Question[] 
 export const getRandomQuestions = (chapterId: string, count: number, difficulty?: string): Question[] => {
   let pool = questions.filter(q => q.chapterId === chapterId);
   if (difficulty) {
-    pool = pool.filter(q => q.difficulty === difficulty);
+    const difficultyPool = pool.filter(q => q.difficulty === difficulty);
+    if (difficultyPool.length > 0) {
+      pool = difficultyPool;
+    }
   }
-  const shuffled = pool.sort(() => Math.random() - 0.5);
+  if (pool.length === 0) {
+    pool = questions;
+  }
+  const shuffled = [...pool].sort(() => Math.random() - 0.5);
   return shuffled.slice(0, Math.min(count, shuffled.length));
 };
 
